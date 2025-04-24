@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<rtde_config>
+	<recipe key="out">
+		<field name="actual_q" type="VECTOR6D"/> 
+		<field name="actual_TCP_pose" type="VECTOR6D"/> 
+
+		<field name="target_q" type="VECTOR6D"/> 
+		<field name="target_TCP_pose" type="VECTOR6D"/> 
+		
+		<field name="output_int_register_0" type="INT32"/>
+		<field name="output_int_register_7" type="INT32"/>
+	</recipe>
+</rtde_config>

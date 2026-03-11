@@ -1,11 +1,11 @@
 # Open VLA on UR3 Robot Arm
 
-This repository documents my experiments with **[OpenVLA](https://github.com/openvla/openvla)** — an open-source Vision-Language-Action (VLA) model designed to control robots through **visual** and **natural-language** inputs.
+This repository documents my experiments with **[OpenVLA](https://github.com/openvla/openvla)** an open-source Vision-Language-Action (VLA) model designed to control robots through **visual** and **natural-language** inputs.
 My goal was to evaluate how well OpenVLA generalizes to a **UR3 robotic arm** for tabletop manipulation tasks and to explore **fine-tuning** techniques such as **LoRA (Low-Rank Adaptation)** when zero-shot inference fails.
 
 ---
 
-## 📘 Introduction
+## Introduction
 
 OpenVLA represents an exciting step toward general-purpose robot control. It’s the **first fully open-source VLA model**, whereas others like Google’s **RT-1**, **RT-2**, and **Octo** remain closed.
 
@@ -15,17 +15,17 @@ This project captures my workflow from setting up the UR3 to collecting trajecto
 
 ---
 
-## 🧠 What Is OpenVLA?
+## What Is OpenVLA?
 
 OpenVLA is a **Vision-Language-Action foundation model** built on **LLaMA 2**.
 It processes:
 
-* 🖼️ **An image** (RGB)
-* 💬 **A natural-language instruction**
+* **An image** (RGB)
+* **A natural-language instruction**
 
 and outputs:
 
-* 🤖 **Low-level robot actions** (Δx, Δy, Δz, Δrx, Δry, Δrz, gripper Δ)
+* **Low-level robot actions** (Δx, Δy, Δz, Δrx, Δry, Δrz, gripper Δ)
 
 ### Architecture Overview
 
@@ -35,7 +35,7 @@ and outputs:
 
 ---
 
-## ⚙️ Setup & Integration
+## Setup & Integration
 
 ### **Hardware**
 
@@ -51,7 +51,7 @@ and outputs:
 
 ---
 
-## 🧩 Integration Challenges
+## Integration Challenges
 
 While OpenVLA provides inference code, **execution on real hardware** is left as a placeholder understandably, since each robot uses a unique API.
 This highlights an ongoing problem in robotics: the **lack of standardization** in control interfaces.
@@ -59,9 +59,9 @@ Even with ROS, commercial robots like the UR3 rely heavily on **proprietary SDKs
 
 ---
 
-## 🔄 Workflow
+## Workflow
 
-### 1️⃣ Data Collection
+### Data Collection
 
 OpenVLA was originally trained on the **Open X-Embodiment** dataset (simulation + teleoperation).
 The paper suggests 10–20 episodes are enough for fine-tuning a new robot.
@@ -76,7 +76,7 @@ Since I didn’t use teleoperation, I adopted a **manual data-logging pipeline**
 
 ---
 
-### 2️⃣ Inference Pipeline
+### Inference Pipeline
 
 During inference (`vla_inference.py`):
 
@@ -95,7 +95,7 @@ During inference (`vla_inference.py`):
 
 ---
 
-## 🧩 How VLA Interprets Instructions
+## How VLA Interprets Instructions
 
 1. **LLM grounding** — parses the instruction semantically
 2. **Vision encoder** — localizes objects in the scene
@@ -106,15 +106,15 @@ Essentially, the model **maps words and pixels to motion**.
 
 ---
 
-## 💡 Key Learnings
+## Key Learnings
 
-### 🔍 Model Limitations
+### Model Limitations
 
 * **Zero-shot ≠ universal:** UR3 was unseen during training, so the model required fine-tuning.
 * **Data collection bottleneck:** Without teleoperation, gathering 10–20 episodes is tedious.
 * **Single-arm assumption:** OpenVLA currently doesn’t handle multi-arm systems.
 
-### 🧰 Practical Takeaways
+### Practical Takeaways
 
 * **Fine-tuning works**, but demands consistent trajectory quality.
 * **Standardization gap:** Robotics APIs remain fragmented hindering foundation model integration.
@@ -122,7 +122,7 @@ Essentially, the model **maps words and pixels to motion**.
 
 ---
 
-## 🧾 Conclusion
+## Conclusion
 
 Experimenting with OpenVLA on a UR3 arm offered a tangible glimpse of **language-conditioned robot control**.
 We’ve come a long way from scripting joint trajectories to simply **telling a robot what to do**.
@@ -138,7 +138,7 @@ With growing community efforts, we may soon reach a point where **teaching a rob
 
 ---
 
-## 🖥️ Future Work
+## Future Work
 
 * Automate teleoperation-based data collection
 * Explore multi-arm and multi-object extensions
@@ -147,7 +147,7 @@ With growing community efforts, we may soon reach a point where **teaching a rob
 
 ---
 
-## 🙌 Acknowledgements
+## Acknowledgements
 
 * **OpenVLA Team** for releasing the first open Vision-Language-Action model
 * **Universal Robots** for the UR3 platform
@@ -155,7 +155,7 @@ With growing community efforts, we may soon reach a point where **teaching a rob
 
 ---
 
-## 📄 License
+## License
 
 This project follows the same license as the [OpenVLA repository](https://github.com/openvla/openvla).
 Please refer to that repository for details.
